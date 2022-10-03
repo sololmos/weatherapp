@@ -3,7 +3,7 @@ const Navbar = () =>{
         <nav className="navbar bg-dark text-light mb-5">
             <div className="container-fluid">
                 <h3 className="mx-auto">
-                    Weather forecast
+                    WeatherApp
                 </h3>
 
             </div>
