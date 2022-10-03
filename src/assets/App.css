@@ -8,3 +8,6 @@ body{
 .input-group{
   width: 60%;
 }
+.card{
+  max-width: 60%;
+}
