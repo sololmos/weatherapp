@@ -9,6 +9,13 @@ const Card = ({ showData, loadingData, weather, forecast}) =>{
     var date= day + '/' + month + '/' + year;
     var url='';
     var iconUrl = '';
+    //forecast
+    var iconUrl3 = '';
+    var iconUrl6 = '';
+    var iconUrl9 = '';
+    var forecastDate3= '';
+    var forecastDate6= '';
+    var forecastDate9= '';
 
     if(loadingData){
         return <Spinner/>
@@ -18,6 +25,13 @@ const Card = ({ showData, loadingData, weather, forecast}) =>{
         url = 'https://openweathermap.org/img/w/';
         iconUrl = url + weather.weather[0].icon + '.png' //access icon
 
+         iconUrl3 = url + forecast.list[1].weather[0].icon + '.png';
+         iconUrl6 = url + forecast.list[2].weather[0].icon + '.png';
+         iconUrl9 = url + forecast.list[3].weather[0].icon + '.png';
+
+         forecastDate3= forecast.list[1].dt_txt.substring(8,10) + '/' + forecast.list[1].dt_txt.substring(5,7) + '/' + forecast.list[1].dt_txt.substring(0,4) + ' ' + forecast.list[1].dt_txt.substring(11,13);
+         forecastDate6= forecast.list[2].dt_txt.substring(8,10) + '/' + forecast.list[2].dt_txt.substring(5,7) + '/' + forecast.list[2].dt_txt.substring(0,4) + ' ' + forecast.list[2].dt_txt.substring(11,13);
+         forecastDate9= forecast.list[3].dt_txt.substring(8,10) + '/' + forecast.list[3].dt_txt.substring(5,7) + '/' + forecast.list[3].dt_txt.substring(0,4) + ' ' + forecast.list[3].dt_txt.substring(11,13);
     };
 
 
@@ -36,7 +50,7 @@ const Card = ({ showData, loadingData, weather, forecast}) =>{
                                     <img 
                                     className="img-fluid rounded-start"
                                     alt="imagen"
-                                    src="https://images.pexels.com/photos/4176261/pexels-photo-4176261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                                    src="https://images.pexels.com/photos/1828305/pexels-photo-1828305.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
 
                                 </div>
                                 <div className="col-md-8">
@@ -47,6 +61,28 @@ const Card = ({ showData, loadingData, weather, forecast}) =>{
                                     <h5 className="card-text">Humedad: {weather.main.humidity} %</h5>
                                     <h5 className="card-text">Velocidad del viento: {weather.wind.speed} m/s</h5>
                                 </div>
+                                <hr/>
+                                <div className="row mt-4">
+                                    <div className="col">
+                                        <p>{forecastDate3} h.</p>
+                                        <p className="description"> <img src={iconUrl3} alt='icon3'/>{forecast.list[1].weather[0].description}</p>
+                                        <p className="temp">{(forecast.list[1].main.temp - 273.15).toFixed(1)} °C</p>
+                                    </div>
+
+                                    <div className="col">
+                                        <p>{forecastDate6} h.</p>
+                                        <p className="description"> <img src={iconUrl6} alt='icon6'/>{forecast.list[2].weather[0].description}</p>
+                                        <p className="temp">{(forecast.list[2].main.temp - 273.15).toFixed(1)} °C</p>
+                                    </div>
+
+                                    <div className="col">
+                                        <p>{forecastDate9} h.</p>
+                                        <p className="description"> <img src={iconUrl9} alt='icon9'/>{forecast.list[3].weather[0].description}</p>
+                                        <p className="temp">{(forecast.list[3].main.temp - 273.15).toFixed(1)} °C</p>
+                                    </div>
+
+                                </div>
+                                
 
                                 </div>
 
